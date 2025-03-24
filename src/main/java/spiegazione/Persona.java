@@ -8,7 +8,7 @@ import jakarta.persistence.Id;
 import java.util.StringJoiner;
 
 @Entity
-public class Persona
+public class Persona implements Comparable<Persona>
 {
 
 	@Id
@@ -17,20 +17,25 @@ public class Persona
 
 	private String nome,cognome;
 
+	private int eta;
+
 	public Persona(){}
 
-	public Persona(Long id, String nome, String cognome)
+	public Persona(Long id, String nome, String cognome, int eta)
 	{
 		this.id = id;
 		this.nome = nome;
 		this.cognome = cognome;
+		this.eta = eta;
 	}
 
-	public Persona(String nome, String cognome)
+	public Persona(String nome, String cognome, int eta)
 	{
 		this.nome = nome;
 		this.cognome = cognome;
+		this.eta = eta;
 	}
+
 
 	public Long getId()
 	{
@@ -62,6 +67,17 @@ public class Persona
 		this.cognome = cognome;
 	}
 
+
+	public int getEta()
+	{
+		return eta;
+	}
+
+	public void setEta(int eta)
+	{
+		this.eta = eta;
+	}
+
 	@Override
 	public String toString()
 	{
@@ -69,6 +85,25 @@ public class Persona
 				.add("id: " + id)
 				.add("nome: " + nome)
 				.add("cognome: " + cognome)
+				.add("eta: " + eta)
 				.toString();
+	}
+
+	@Override
+	public int compareTo(Persona o)
+	{
+//		fa restituire numero positivo quando this è più grande di o
+//		0 quando this è uguale a o
+//		negativo quando this è più piccolo di o
+		//il criterio lo decidiamo noi qui
+
+//		if(this.getEta()>o.getEta())
+//			return 1;
+//
+//		if(this.getEta()==o.getEta())
+//			return 0;
+//
+//		return -1;
+		return this.getEta()-o.getEta();
 	}
 }
