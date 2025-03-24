@@ -1,5 +1,7 @@
 package spiegazione;
 
+import org.hibernate.Session;
+
 import java.util.List;
 
 public interface iPersonaDAO
